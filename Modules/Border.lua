@@ -52,11 +52,7 @@ local function SetBorderBackdrop(border, borderSettings)
 	)
 end
 
-local chatFrames = {}
-
-for i = 1, NUM_CHAT_WINDOWS do
-	chatFrames[i] = _G["ChatFrame" .. i]
-end
+local chatFrames = Addon.Utils.getChatFrames()
 
 function Addon.Modules.Border:Init()
 	local borderModule = Addon.Modules.Border

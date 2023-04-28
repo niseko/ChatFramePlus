@@ -28,12 +28,18 @@ function Addon.Utils.tableEquals(t1, t2)
 			return false
 		end
 	end
-
 	for k, v in pairs(t2) do
 		if t1[k] ~= v then
 			return false
 		end
 	end
-
 	return true
+end
+
+function Addon.Utils.getChatFrames()
+	local chatFrames = {}
+	for i = 1, NUM_CHAT_WINDOWS do
+		chatFrames[i] = _G["ChatFrame" .. i]
+	end
+	return chatFrames
 end
