@@ -23,5 +23,8 @@ Modules\Border.lua
 Core\Core.lua
 Core\Database.lua
 
+# Hooks
+Hooks\ChatFrame.lua
+
 # Config
 Config\Options.lua
