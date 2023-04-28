@@ -65,14 +65,6 @@ function Addon.Modules.Border:Init()
 		if chatFrame:IsVisible() then
 			borderModule:Create(chatFrame)
 		end
-
-		chatFrame:HookScript("OnShow", function(self)
-			borderModule:Create(self)
-		end)
-
-		chatFrame:HookScript("OnHide", function(self)
-			borderModule:Remove(self)
-		end)
 	end
 end
 

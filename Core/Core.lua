@@ -1,6 +1,6 @@
 local _, Addon = ...
 
-ChatFramePlus = LibStub("AceAddon-3.0"):NewAddon("ChatFramePlus", "AceConsole-3.0")
+ChatFramePlus = LibStub("AceAddon-3.0"):NewAddon("ChatFramePlus", "AceConsole-3.0", "AceHook-3.0")
 
 ChatFramePlus.VERSION = GetAddOnMetadata("ChatFramePlus", "Version")
 
@@ -48,4 +48,6 @@ end
 
 function ChatFramePlus:OnEnable()
 	Addon.Modules.Border:Init()
+
+	ChatFramePlus.Hooks.ChatFrame:Init()
 end
