@@ -43,6 +43,7 @@ function ChatFramePlus:OnInitialize()
 	Addon.Options:Init()
 
 	self:RegisterChatCommand("cfp", chatCommand)
+	self:RegisterChatCommand("chatframeplus", chatCommand)
 end
 
 function ChatFramePlus:OnEnable()
