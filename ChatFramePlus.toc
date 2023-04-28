@@ -1,0 +1,27 @@
+## Interface: 30401
+## Title: ChatFramePlus
+## Author: Nicholas Drzewiecki
+## Notes: ChatFramePlus
+## SavedVariables: ChatFramePlusDB
+## Version: @project-version@
+## X-Github: https://github.com/drzewieckinicholas/ChatFramePlus
+## X-Website: https://github.com/drzewieckinicholas/ChatFramePlus
+
+# Libraries
+Libs\Libs.xml
+
+# Debug
+Debug\Debug.lua
+
+# Utils
+Utils\Utils.lua
+
+# Modules
+Modules\Border.lua
+
+# Core
+Core\Core.lua
+Core\Database.lua
+
+# Config
+Config\Options.lua
