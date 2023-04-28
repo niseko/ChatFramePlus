@@ -34,7 +34,7 @@ end
 local function SetBorderBackdrop(border, borderSettings)
 	local borderBackdrop = {
 		edgeFile = borderSettings.texture,
-		edgeSize = borderSettings.size,
+		edgeSize = borderSettings.edgeSize,
 		insets = {
 			left = borderSettings.insets,
 			right = borderSettings.insets,
