@@ -28,6 +28,22 @@ local function setBorderColor(chatFrame)
 	end
 end
 
+local function getBorderEdgeSize(chatFrameId)
+	return function(info)
+		return Addon.db.profile.chatFrames[chatFrameId].border.edgeSize
+	end
+end
+
+local function setBorderEdgeSize(chatFrame)
+	return function(info, edgeSize)
+		local chatFrameId = chatFrame:GetID()
+
+		Addon.db.profile.chatFrames[chatFrameId].border.edgeSize = edgeSize
+
+		Addon.Modules.Border:Update(chatFrame)
+	end
+end
+
 local function getBorderTexture(chatFrameId)
 	return function(info)
 		return Addon.db.profile.chatFrames[chatFrameId].border.texture
@@ -44,39 +60,55 @@ local function setBorderTexture(chatFrame)
 	end
 end
 
+local function borderOptions(chatFrameId, chatFrame)
+	return {
+		type = "group",
+		name = "Border",
+		desc = "Options to modify the appearance of the chat frame border",
+		inline = false,
+		order = 1,
+		args = {
+			borderColor = {
+				type = "color",
+				name = "Color",
+				desc = "Select the border color",
+				order = 1,
+				hasAlpha = true,
+				width = "full",
+				get = getBorderColor(chatFrameId),
+				set = setBorderColor(chatFrame),
+			},
+			borderEdgeSize = {
+				type = "range",
+				name = "Edge Size",
+				desc = "Adjust the border edge size",
+				min = 8,
+				max = 16,
+				step = 4,
+				order = 2,
+				width = "full",
+				get = getBorderEdgeSize(chatFrameId),
+				set = setBorderEdgeSize(chatFrame),
+			},
+			borderTexture = {
+				type = "select",
+				name = "Texture",
+				desc = "Select the border texture",
+				order = 3,
+				values = borderTextures,
+				width = "full",
+				get = getBorderTexture(chatFrameId),
+				set = setBorderTexture(chatFrame),
+			},
+		},
+	}
+end
+
 local function generateOptionsTable(chatFrameId)
 	local chatFrame = _G["ChatFrame" .. chatFrameId]
 
 	return {
-		borderGroup = {
-			type = "group",
-			name = "Border Options",
-			desc = "Options to modify the appearance of the chat frame border",
-			inline = false,
-			order = 1,
-			args = {
-				borderColor = {
-					type = "color",
-					name = "Border Color",
-					desc = "Select the border color",
-					order = 1,
-					hasAlpha = true,
-					width = "full",
-					get = getBorderColor(chatFrameId),
-					set = setBorderColor(chatFrame),
-				},
-				borderTexture = {
-					type = "select",
-					name = "Border Texture",
-					desc = "Select the border texture",
-					order = 2,
-					values = borderTextures,
-					width = "full",
-					get = getBorderTexture(chatFrameId),
-					set = setBorderTexture(chatFrame),
-				},
-			},
-		},
+		borderGroup = borderOptions(chatFrameId, chatFrame),
 	}
 end
 

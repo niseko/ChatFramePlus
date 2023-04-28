@@ -4,7 +4,7 @@ local function createDefaultBorderSettings()
 	local borderSettings = {
 		color = { r = 1, g = 1, b = 1, a = 1 },
 		texture = "Interface\\Tooltips\\UI-Tooltip-Border",
-		size = 16,
+		edgeSize = 8,
 		insets = 4,
 	}
 
